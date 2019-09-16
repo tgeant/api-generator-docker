@@ -8,7 +8,7 @@ Build your image:
 `docker build -t api_template .`
 
 I recommend to use this image as a template. To create a new api, run your image:
-`docker run -p 9000:9000 --name container_name -it -v $(pwd):/app api_template`
+`docker run -p 9000:9000 --name container_name -it -v $(pwd)/src:/app/src api_template`
 
 Then, use the [npm-generator doc](https://github.com/diegohaz/rest) to create your api.
 
