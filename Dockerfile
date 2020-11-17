@@ -14,6 +14,9 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 USER root
 
+#Remove root password
+RUN echo 'docker     ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 #mongodb
 RUN mkdir -p /data/db
 
@@ -32,4 +35,4 @@ RUN chown -R docker /app
 
 USER docker
 
-CMD /bin/bash
+CMD sudo chown -R docker /app && sudo mongod & sudo npm run dev & /bin/bash
